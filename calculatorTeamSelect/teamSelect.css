@@ -1,0 +1,571 @@
+body {
+ 
+    /*font-weight: 400;*/
+    
+  }
+  body:after {
+    content: "@selimdoyranli";
+    font-size: 1rem;
+    color: #aaa;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+  }
+
+
+
+
+
+
+
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+     
+     background-repeat: no-repeat;
+     text-align: center;
+     background-size: cover;
+     background-attachment: fixed;
+       z-index:-2;
+   }
+   h1 {
+     padding-top: 5%;
+     font-size: 10rem;
+     color: white;
+     margin-left: 5%;
+   
+   }
+   #addtag{
+     border: 0;
+     border-radius:5px;
+     padding: 0.3rem;
+   
+   }
+   
+   
+   .homepagesearchbar-initial {
+     width: 50%;
+     padding-top:2%;
+     margin-left: 25%;
+   
+     /*-webkit-background-image: linear-gradient(red,yellow);*/
+     /* background-image: linear-gradient(50deg, lightblue, darkblue); */
+     /* border-radius:10px;
+     z-index:1; */
+     transition:all 0.5s;
+   }
+   
+   .homepagesearchbar-final {
+     width: 100%;
+     padding-top: 0;
+     margin-left: 0;
+     padding-top: 0.5%;
+     padding-bottom: 0.5%;
+     /* padding-top:2%;
+     margin-left: 25%; */
+     position: fixed;
+     top: 0;
+     left: 0;
+     z-index: 100;
+     /*-webkit-background-image: linear-gradient(red,yellow);*/
+     background-color: darkblue;
+     transition:all 0.5s;
+     /* border-radius:10px;
+     z-index:1; */
+   
+   }
+   
+   
+   
+   .form-control {
+     /* Search Bar Height*/
+     height: 40px;
+   }
+   /* #searchbutton {
+     margin-top: 5%;
+     transform: translateY(-35%);
+   
+     /* Search Button*/
+   /* } */
+   #searchbutton:hover{
+     color: white;
+     background-color: #617be3;
+   
+   
+   }
+   
+   
+   
+   
+   .tt-input {
+     z-index: 10;
+     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+   }
+   
+   .tt-input, .tt-hint {
+     width: 422px;
+     height: 30px;
+     padding: 8px 12px;
+     font-size: 18px;
+     line-height: 30px;
+     border: 2px solid #ccc;
+     border-radius: 8px;
+     outline: none;
+   }
+   .tt-hint {
+     color: #999;
+   }
+   
+   
+   
+   
+   /* --------------------------------------------------------- */
+   
+   
+   .tt-menu {    /* used to be tt-dropdown-menu in older versions */
+     z-index: 9999;
+     width: 422px;
+     margin-top: 4px;
+     padding: 4px 0;
+     background-color: #fff;
+     border: 1px solid #ccc;
+     border: 1px solid rgba(0, 0, 0, 0.2);
+     -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+             border-radius: 4px;
+     -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+             box-shadow: 0 5px 10px rgba(0,0,0,.2);
+   }
+   
+   .tt-suggestion {
+     z-index: 9999;
+     padding: 3px 20px;
+     line-height: 24px;
+   }
+   
+   .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+     z-index: 9999;
+     color: #fff;
+     background-color: #0097cf;
+   
+   }
+   
+   .tt-suggestion p {
+     z-index: 9999;
+     margin: 0;
+   }
+   
+   /* Snackbar */
+   /* The snackbar - position it at the bottom and in the middle of the screen */
+   #snackbar {
+     visibility: hidden; /* Hidden by default. Visible on click */
+     min-width: 250px; /* Set a default minimum width */
+     margin-left: -125px; /* Divide value of min-width by 2 */
+     background-color: #333; /* Black background color */
+     color: #fff; /* White text color */
+     text-align: center; /* Centered text */
+     border-radius: 2px; /* Rounded borders */
+     padding: 16px; /* Padding */
+     position: fixed; /* Sit on top of the screen */
+     z-index: 10; /* Add a z-index if needed */
+     left: 50%; /* Center the snackbar */
+     bottom: 30px; /* 30px from the bottom */
+   }
+   
+   /* Show the snackbar when clicking on a button (class added with JavaScript) */
+   #snackbar.show {
+     visibility: visible; /* Show the snackbar */
+     /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+     However, delay the fade out process for 2.5 seconds */
+     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+     animation: fadein 0.5s, fadeout 0.5s 2.5s;
+   }
+   
+   /* Animations to fade the snackbar in and out */
+   @-webkit-keyframes fadein {
+     from {bottom: 0; opacity: 0;}
+     to {bottom: 30px; opacity: 1;}
+   }
+   
+   @keyframes fadein {
+     from {bottom: 0; opacity: 0;}
+     to {bottom: 30px; opacity: 1;}
+   }
+   
+   @-webkit-keyframes fadeout {
+     from {bottom: 30px; opacity: 1;}
+     to {bottom: 0; opacity: 0;}
+   }
+   
+   @keyframes fadeout {
+     from {bottom: 30px; opacity: 1;}
+     to {bottom: 0; opacity: 0;}
+   }
+   
+   
+   .box{
+     box-shadow: -10px 10px  20px black;
+     border:20px solid white;
+   
+   }
+   
+   
+   
+   
+   
+   
+   
+   .footer {
+     padding-bottom: 3cm;
+   }
+   
+
+  .wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+    min-height: 500px;
+    margin-top:-6.5rem;
+   
+  }
+  .wrapper.fadeIt{
+    animation: fadein 0.5s;
+  }
+  
+  .wrapper.fadeItOut{
+    animation: fadeOut 0.5s;
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1;}
+    to {opacity: 0;}
+  }
+  
+  /*
+    *** fut-player-card styles ***
+  */
+  .fut-player-card {
+    position: relative;
+    width: 14rem;
+    height: 19rem;
+    box-shadow: 0.7rem 0.7rem 2.7rem 1.5rem lightgrey;
+    background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    border: 3px solid gold;
+    padding: 0.7rem 0;
+    z-index: 2;
+    transition: all 200ms ease-in;
+  }
+  
+  .fut-player-card:hover {
+    transform: scale(1.1,1.1);
+  }
+  
+  
+  
+  .fut-player-card .player-card-top {
+    position: relative;
+    display: flex;
+    color: #e9cc74;
+    padding: 0 1.2rem;
+  }
+  .fut-player-card .player-card-top .player-master-info {
+    position: absolute;
+    line-height: 1.3rem;
+    font-weight: 300;
+    padding: 1rem 0;
+    text-transform: uppercase;
+  }
+  .fut-player-card .player-card-top .player-master-info .player-rating {
+    font-size: 1.4rem;
+   
+   margin-bottom: 0.3rem;
+  }
+  .fut-player-card .player-card-top .player-master-info .player-position {
+    font-size: 1.2rem;
+    margin-left: 0rem;
+  }
+  .fut-player-card .player-card-top .player-master-info .player-nation {
+    display: block;
+    width: 1.5rem;
+    height: 25px;
+    margin: 0.3rem 0;
+    
+  }
+  .fut-player-card .player-card-top .player-master-info .player-nation img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .fut-player-card .player-card-top .player-master-info .player-club {
+    display: block;
+    width: 1.7rem;
+    height: 30px;
+    margin-left: -0.2rem;
+    
+  }
+  .fut-player-card .player-card-top .player-master-info .player-club img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  
+  
+  
+  
+  .fut-player-card .player-card-top .player-picture {
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .fut-player-card .player-card-top .player-picture img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+    position: relative;
+    right: -1.5rem;
+    bottom: 0;
+  }
+  
+  .fut-player-card .player-card-top .player-close {
+    position: absolute;
+    right:0;
+    top:0;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .fut-player-card .player-card-top .player-close img {
+    width: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+    
+  }
+  
+  .fut-player-card .player-card-top .player-picture .player-extra {
+    position: absolute;
+    right: 0;
+    bottom: -0.5rem;
+    overflow: hidden;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100%;
+    height: 2rem;
+    padding: 0 1rem;
+    text-align: right;
+    background: none;
+  }
+  .fut-player-card .player-card-top .player-picture .player-extra span {
+    margin-left: 0.6rem;
+    text-shadow: 2px 2px #333;
+  }
+  .fut-player-card .player-card-bottom {
+    position: relative;
+  }
+  .fut-player-card .player-card-bottom .player-info {
+    display: block;
+    padding: 0.3rem 0;
+    color: #e9cc74;
+    width: 90%;
+    margin: 0 auto;
+    height: auto;
+    position: relative;
+    z-index: 2;
+  }
+  .fut-player-card .player-card-bottom .player-info .player-name {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(233, 204, 116, 0.1);
+    padding-bottom: 0.3rem;
+    overflow: hidden;
+  }
+  .fut-player-card .player-card-bottom .player-info .player-name span {
+    display: block;
+    text-shadow: 2px 2px #111;
+  }
+  .fut-player-card .player-card-bottom .player-info .player-features {
+    margin: 0.5rem auto;
+    display: flex;
+    justify-content: center;
+  }
+  .fut-player-card .player-card-bottom .player-info .player-features .player-features-col {
+    border-right: 2px solid rgba(233, 204, 116, 0.1);
+    padding: 0 1rem;
+  }
+  .fut-player-card .player-card-bottom .player-info .player-features .player-features-col span {
+    display: flex;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    padding-top: 0.1rem;
+  }
+  .fut-player-card .player-card-bottom .player-info .player-features .player-features-col span .player-feature-value {
+    margin-right: 0.3rem;
+    font-weight: 700;
+  }
+  .fut-player-card .player-card-bottom .player-info .player-features .player-features-col span .player-feature-title {
+    font-weight: 300;
+  }
+  .fut-player-card .player-card-bottom .player-info .player-features .player-features-col:last-child {
+    border: 0;
+  }
+  
+  .crossImage{
+    cursor: pointer;
+    border-radius: 15px 15px 15px 15px;
+    transition:all 200ms;
+  }
+  
+  .crossImage :hover{
+    transform: scale(1.9,1.9);
+    
+  
+  }
+  #checkButton{
+    padding:10px;
+    transition: all 200ms
+  }
+  
+  #checkButton:hover{
+  
+    background-color: blue;
+    transform:scale(1.2,1.2);
+  
+  }
+  
+  .formNext{
+    color:blue;
+    text-decoration: underline;
+    text-decoration-color: blue;
+    transition: all 20ms ;
+  }
+  
+  .formNext:hover{
+    cursor: pointer;
+   
+  
+  }
+  .formNext:active{
+    color:red;
+    text-decoration-color: red;
+  }
+  
+  #playersSelectedDiv{
+    position:fixed;
+    top:5%;
+    right: 0%;
+    width:15rem;
+    height: 14rem;
+    background-image: linear-gradient(black,darkgrey);
+    box-shadow: 0.1rem 0.1rem 0.5rem 0.2rem grey;
+    border-radius:1rem 0rem 0rem 1rem;
+    color:white;
+    z-index: 10;
+    /*box-shadow: 0.3rem 0.3rem 5rem 5rem black;*/
+  }
+  
+  .playerType{
+    margin-right: 0.2rem;
+  }
+  
+  .criteriaButton{
+    color:blue;
+    text-decoration: underline;
+    text-decoration-color: blue;
+    transition: all 20ms ;
+  }
+  
+  .criteriaButton:hover{
+    cursor: pointer;
+   
+  
+  }
+  .criteriaButton:active{
+    color:red;
+    text-decoration-color: red;
+  }
+  
+  #ruleDiv{
+    
+    width:40rem;
+    height: 22.5rem;
+    background-color:rgb(238, 238, 236);
+    /* border:4px solid gold; */
+    transition: all 1s;
+    box-shadow: 0.1rem 0.1rem 0.5rem 0.2rem grey;
+    color:purple;
+    z-index: 13;
+  }
+  
+  .positionDown{
+    position:fixed;
+    top:1%;
+    left:24%;
+  }
+  
+  .positionUp{
+    position:fixed;
+    top:-100%;
+    left:24%;
+  }
+  
+  #scoreDiv{
+    background-color:rgb(238, 238, 236);
+    max-width: 24rem;
+    /* border:0.01rem solid black; */
+    box-shadow: 0.1rem 0.1rem 0.5rem 0.2rem grey;
+    padding:0.5rem 0.5rem;
+  
+  }
+  .backButton{
+    position:absolute;
+    top:2rem;
+    left:3rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color:black;
+    transition: all 200ms;
+  
+  }
+  .backButton:hover{
+    cursor: pointer;
+    font-size: 1.6rem;
+  }
+  
+  .backButton:active{
+    color:red;
+  }
+  
+  #overlay {
+    position: fixed; /* Sit on top of the page content */
+    display:none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(20, 12, 12, 0.5); /* Black background with opacity */
+    z-index: 12; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+  
+  /* Media Queries */
+  
