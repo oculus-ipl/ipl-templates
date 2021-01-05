@@ -15,11 +15,15 @@
  
   <link rel="stylesheet" href="./homepagemediaquery.css">
   <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="./teamSelect.css">
+  <link rel="stylesheet" href="./calWithLog.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
   <style class="INLINE_PEN_STYLESHEET_ID">
-   
-* {
+    * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -65,7 +69,7 @@
   padding: 1rem;
  
   height: 70vh;
-  border-radius: 24px;
+  border-radius: 1rem;
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: rgb(245, 245, 245);
@@ -111,6 +115,78 @@ h2 {
 html {
   scroll-behavior: smooth;
 }
+
+.submitBtn{
+
+	transform:translate(-75%,-100%);
+	width:8rem;
+	height:3.25rem;
+  font-size:20px;
+  font-weight: lighter;
+	border:1px solid purple;
+  
+  background-color: white;
+  color:purple;
+  
+	transition:color 0.3s ease-out,box-shadow 0.2s ease-in,border 0.3s ease-out;
+}
+.submitBtn::before{
+	content:"";
+	position:absolute;
+	top:0px;
+	left:0px;
+
+	clip-path: circle(0% at 0% 100%);
+
+	background-color:purple;
+	width:100%;
+	height:100%;
+
+	transition:clip-path 0.25s ease-in;
+	z-index:-1;
+
+}
+.submitBtn:hover::before{
+	clip-path: circle(80% at 0% 100%);
+}
+.submitBtn::after{
+	content:"";
+	position:absolute;
+	right:0px;
+	top:0px;
+	background-color:purple;
+	width:100%;
+	height:100%;
+	clip-path: circle(0% at 100% 0%);
+	transition:clip-path 0.25s ease-in;
+	z-index:-1;
+
+}
+.submitBtn:hover::after{
+	clip-path: circle(80% at 100% 0%);
+}
+
+
+.submitBtn:hover{
+	box-shadow:10px 10px 40px purple; 
+	color:rgb(255, 255, 255);
+
+	cursor:pointer;
+	border:1.5px solid white;
+}
+.submitBtn:active{
+  
+	font-weight: bold;
+	background-color:purple;
+	color:white;
+	box-shadow: 8px 8px 100px purple;
+
+	border:2px solid white;
+}
+
+
+
+
   </style>
 
   
@@ -122,18 +198,18 @@ html {
 
 <body>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700"/>
-  <div class="headBody container-fluid">
+  <div class="headBody container-fluid" >
     
     <a href="/mainPage"><div class="backButton"><- BACK</div></a>
     <div  style="padding: 1%;" ></div>
   
-    <div class="homepagesearchbar-initial container-fluid" id="fixedDiv" style="background-color: rgb(29, 12, 19);padding-bottom: 2%; border-radius: 4px 4px 4px 4px;z-index: 10">
+    <!-- <div class="homepagesearchbar-initial container-fluid" id="fixedDiv" style="background-color: black;padding-bottom: 2%; border-radius: 4px 4px 4px 4px;z-index: 10">
       <input id="searchBar" type="text" class="form-control container-fluid" placeholder="Search..." autocomplete="off" style="z-index:5">
       <button type="button" id="addtag" name="addTag" onclick="checkName();">Add Player</button>  
-    </div>
+    </div> -->
  
-    <div  style="padding: 1%;" ></div>
-    <div class="container-fluid" id="scoreDiv">
+    <!-- <div  style="padding: 1%;" ></div> -->
+    <div class="container-fluid" id="scoreDiv" >
       <div class="container">
         <h4 style="color:purple">TOTAL SCORE</h4>
       </div>
@@ -153,17 +229,16 @@ html {
 
   </div>
 
-  <div  style="padding: 2%;" ></div>
-<!-- Div where players are added  -->
-  <div class="container-fluid backgroundPlayer" align="center" > 
-      <!-- <div class="row" id="playerDiv" style="width:90%; ">
-      </div> -->
-      <div style="max-width: 90%;padding-top: 3rem;" align="center" id="playerDiv" class="cardDiv"> 
-     
-      </div>
-  </div>
+  <div  style="padding: 4%;" ></div>
 
-  
+<!-- Div where players are added  -->
+<div class="container-fluid" align="center">
+  <div style="max-width: 90%;padding-top: 3rem;" align="center" id="playerDiv" class="cardDiv"> 
+     
+  </div>
+</div>
+
+ 
  <!-- JQuery -->
 
  <!-- Search Bar autocomplete plugin -->
@@ -204,243 +279,244 @@ html {
   <div class="extraDiv">
   <div class="batting-section" style="margin-top:0rem" id="moveDown">
     <!-- Batting score total -->
-      
-    <div class="batting-section" style="margin-top:0rem" id="moveDown">
-      <!-- Batting score total -->
-        
-      <div class="score-card">
-        <h1 style="color:purple">Batting:</h1>
-        <div class="total-score-box">
-          <h1 style="color:red">300</h1>
-        </div>
+   
+    <div class="score-card">
+      <h1 style="color:purple">Batting:</h1>
+      <div class="total-score-box">
+        <h1 style="color:red">300</h1>
       </div>
-      <!-- Batting score total ends-->
-  
-      <!-- Player Card Display Starts-->
-      <div class="wrapper2">
-        <!-- POWERPLAY Starts -->
-        <div class="">
-          <div class="score-card">
-            <h2>Powerplay:</h2>
-            <div class="total-score-box">
-              <h2>300</h2>
+    </div>
+    <!-- Batting score total ends-->
+
+    <!-- Player Card Display Starts-->
+    <div class="wrapper2">
+      <!-- POWERPLAY Starts -->
+      <div class="">
+        <div class="score-card">
+          <h2>Powerplay:</h2>
+          <div class="total-score-box">
+            <h2>300</h2>
+          </div>
+        </div>
+
+        <div class="player-card2">
+          <div class="rect-card-search"  >
+            <div class="row" style="padding-left: 3rem;">
+            <div class="col-lg-8">
+              <input list="bat_pplList" name="browser" class="catInput form-control" placeholder="Powerplay Batsman" disabled>
+                <datalist id="bat_pplList">
+                  
+              </datalist>
+            </div>
+            <div class="col">
+              <button onclick="addPlayerCategory('bat_ppl',this)" class="categoryBtn">ADD</button>
             </div>
           </div>
-  
-          <div class="player-card2">
-            <div class="rect-card-search"  >
-              <div class="row" style="padding-left: 3rem;">
-              <div class="col-lg-8">
-                <input list="bat_pplList" name="browser" class="catInput form-control" placeholder="Powerplay Batsman" disabled>
-                  <datalist id="bat_pplList">
-                    
-                </datalist>
-              </div>
-              <div class="col">
-                <button onclick="addPlayerCategory('bat_ppl',this)" class="categoryBtn">ADD</button>
-              </div>
-            </div>
-            </div>
-            <div class="player-card3">
-  
-            </div>
-           
+          </div>
+          <div class="player-card3">
+
           </div>
          
         </div>
-        <!-- Powerplay Ends -->
-  
-        <!-- Mid Over Starts -->
-        <div class="">
-          <div class="score-card">
-            <h2>Mid Over:</h2>
-            <div class="total-score-box">
-              <h2>300</h2>
-            </div>
-          </div>
-  
-          <div class="player-card2">
-            <div class="rect-card-search"  >
-              <div class="row" style="padding-left: 3rem;">
-              <div class="col-lg-8">
-                <input list="bat_midList" name="browser" class="catInput form-control" placeholder="Mid Over Batsman" disabled>
-                  <datalist id="bat_midList">
-  
-                </datalist>
-              </div>
-              <div class="col">
-                <button onclick="addPlayerCategory('bat_mid',this)" class="categoryBtn">ADD</button>
-              </div>
-            </div>
-            </div>
-            <div class="player-card3">
-            
-            
-            </div>
-           
-          </div>
-        </div>
-        <!-- Mid Over Ends -->
-  
-        <!-- Death Starts -->
-        <div class="">
-          <div class="score-card">
-            <h2>Death:</h2>
-            <div class="total-score-box">
-              <h2>300</h2>
-            </div>
-          </div>
-  
-          <div class="player-card2">
-            <div class="rect-card-search"  >
-              <div class="row" style="padding-left: 3rem;">
-              <div class="col-lg-8">
-                <input list="bat_deathList" name="browser" class="catInput form-control" placeholder="Death Batsman" disabled>
-                  <datalist id="bat_deathList">
-  
-                </datalist>
-              </div>
-              <div class="col">
-                <button onclick="addPlayerCategory('bat_death',this)" class="categoryBtn">ADD</button>
-              </div>
-            </div>
-            </div>
-            <div class="player-card3">
-           
-            
-            </div>
-           
-          </div>
-        </div>
-        <!-- Death Ends -->
+       
       </div>
-      <!-- Player Card Display Ends-->
-    </div>
-    <!-- Batting Section Ends -->
-    <div  style="padding: 2%;" ></div>
-  
-    <!-- Bowling Section Starts-->
-    <div class="bowling-section" style="margin-top: 30px">
-      <!-- Batting score total -->
-      <div class="score-card">
-        <h1 style="color:purple">Bowling:</h1>
-        <div class="total-score-box">
-          <h1 style="color:red">300</h1>
+      <!-- Powerplay Ends -->
+
+      <!-- Mid Over Starts -->
+      <div class="">
+        <div class="score-card">
+          <h2>Mid Over:</h2>
+          <div class="total-score-box">
+            <h2>300</h2>
+          </div>
         </div>
-      </div>
-      <!-- Batting score total ends-->
-      <!-- Player Card Display Starts-->
-      <div class="wrapper2">
-        <!-- Powerplay Starts -->
-        <div class="">
-          <div class="score-card">
-            <h2>Powerplay:</h2>
-            <div class="total-score-box">
-              <h2>300</h2>
+
+        <div class="player-card2">
+          <div class="rect-card-search"  >
+            <div class="row" style="padding-left: 3rem;">
+            <div class="col-lg-8">
+              <input list="bat_midList" name="browser" class="catInput form-control" placeholder="Mid Over Batsman" disabled>
+                <datalist id="bat_midList">
+
+              </datalist>
+            </div>
+            <div class="col">
+              <button onclick="addPlayerCategory('bat_mid',this)" class="categoryBtn">ADD</button>
             </div>
           </div>
-  
-          <div class="player-card2">
-            <div class="rect-card-search"  >
-              <div class="row" style="padding-left: 3rem;">
-              <div class="col-lg-8">
-                <input list="bow_pplList" name="browser" class="catInput form-control" placeholder="Powerplay Bowler" disabled>
-                  <datalist id="bow_pplList">
-  
-                </datalist>
-              </div>
-              <div class="col">
-                <button onclick="addPlayerCategory('bow_ppl',this)" class="categoryBtn">ADD</button>
-              </div>
-            </div>
-            </div>
-            <div class="player-card3">
+          </div>
+          <div class="player-card3">
           
-            
-            </div>
-           
+          
+          </div>
+         
+        </div>
+      </div>
+      <!-- Mid Over Ends -->
+
+      <!-- Death Starts -->
+      <div class="">
+        <div class="score-card">
+          <h2>Death:</h2>
+          <div class="total-score-box">
+            <h2>300</h2>
           </div>
         </div>
-        <!-- Powerplay Ends -->
-  
-        <!-- Mid Over Starts -->
-        <div class="">
-          <div class="score-card">
-            <h2>Mid Overs:</h2>
-            <div class="total-score-box">
-              <h2>300</h2>
+
+        <div class="player-card2">
+          <div class="rect-card-search"  >
+            <div class="row" style="padding-left: 3rem;">
+            <div class="col-lg-8">
+              <input list="bat_deathList" name="browser" class="catInput form-control" placeholder="Death Batsman" disabled>
+                <datalist id="bat_deathList">
+
+              </datalist>
+            </div>
+            <div class="col">
+              <button onclick="addPlayerCategory('bat_death',this)" class="categoryBtn">ADD</button>
             </div>
           </div>
-  
-          <div class="player-card2">
-            <div class="rect-card-search"  >
-              <div class="row" style="padding-left: 3rem;">
-              <div class="col-lg-8">
-                <input list="bow_midList" name="browser" class="catInput form-control" placeholder="Mid Over Bowler" disabled>
-                  <datalist id="bow_midList">
-  
-                </datalist>
-              </div>
-              <div class="col">
-                <button onclick="addPlayerCategory('bow_mid',this)" class="categoryBtn">ADD</button>
-              </div>
-            </div>
-            </div>
-            <div class="player-card3">
-           
-            
-            </div>
-           
           </div>
+          <div class="player-card3">
+         
+          
+          </div>
+         
         </div>
-        <!-- Mid Over Ends -->
-  
-        <!-- Death Starts -->
-        <div class="">
-          <div class="score-card">
-            <h2>Death:</h2>
-            <div class="total-score-box">
-              <h2>300</h2>
-            </div>
-          </div>
-  
-          <div class="player-card2">
-            <div class="rect-card-search"  >
-              <div class="row" style="padding-left: 3rem;">
-              <div class="col-lg-8">
-                <input list="bow_deathList" name="browser" class="catInput form-control" placeholder="Death Bowler" disabled>
-                  <datalist id="bow_deathList">
-                    
-                </datalist>
-              </div>
-              <div class="col">
-                <button onclick="addPlayerCategory('bow_death',this)" class="categoryBtn">ADD</button>
-              </div>
-            </div>
-            </div>
-            <div class="player-card3">
-            
-            
-            </div>
-           
-          </div>
-        </div>
-        <!-- Death Ends -->
+      </div>
+      <!-- Death Ends -->
+    </div>
+    <!-- Player Card Display Ends-->
+  </div>
+  <!-- Batting Section Ends -->
+  <div  style="padding: 2%;" ></div>
+
+  <!-- Bowling Section Starts-->
+  <div class="bowling-section" style="margin-top: 30px">
+    <!-- Batting score total -->
+    <div class="score-card">
+      <h1 style="color:purple">Bowling:</h1>
+      <div class="total-score-box">
+        <h1 style="color:red">300</h1>
       </div>
     </div>
-      <!-- Player Card Display Ends-->
+    <!-- Batting score total ends-->
+    <!-- Player Card Display Starts-->
+    <div class="wrapper2">
+      <!-- Powerplay Starts -->
+      <div class="">
+        <div class="score-card">
+          <h2>Powerplay:</h2>
+          <div class="total-score-box">
+            <h2>300</h2>
+          </div>
+        </div>
+
+        <div class="player-card2">
+          <div class="rect-card-search"  >
+            <div class="row" style="padding-left: 3rem;">
+            <div class="col-lg-8">
+              <input list="bow_pplList" name="browser" class="catInput form-control" placeholder="Powerplay Bowler" disabled>
+                <datalist id="bow_pplList">
+
+              </datalist>
+            </div>
+            <div class="col">
+              <button onclick="addPlayerCategory('bow_ppl',this)" class="categoryBtn">ADD</button>
+            </div>
+          </div>
+          </div>
+          <div class="player-card3">
+        
+          
+          </div>
+         
+        </div>
+      </div>
+      <!-- Powerplay Ends -->
+
+      <!-- Mid Over Starts -->
+      <div class="">
+        <div class="score-card">
+          <h2>Mid Overs:</h2>
+          <div class="total-score-box">
+            <h2>300</h2>
+          </div>
+        </div>
+
+        <div class="player-card2">
+          <div class="rect-card-search"  >
+            <div class="row" style="padding-left: 3rem;">
+            <div class="col-lg-8">
+              <input list="bow_midList" name="browser" class="catInput form-control" placeholder="Mid Over Bowler" disabled>
+                <datalist id="bow_midList">
+
+              </datalist>
+            </div>
+            <div class="col">
+              <button onclick="addPlayerCategory('bow_mid',this)" class="categoryBtn">ADD</button>
+            </div>
+          </div>
+          </div>
+          <div class="player-card3">
+         
+          
+          </div>
+         
+        </div>
+      </div>
+      <!-- Mid Over Ends -->
+
+      <!-- Death Starts -->
+      <div class="">
+        <div class="score-card">
+          <h2>Death:</h2>
+          <div class="total-score-box">
+            <h2>300</h2>
+          </div>
+        </div>
+
+        <div class="player-card2">
+          <div class="rect-card-search"  >
+            <div class="row" style="padding-left: 3rem;">
+            <div class="col-lg-8">
+              <input list="bow_deathList" name="browser" class="catInput form-control" placeholder="Death Bowler" disabled>
+                <datalist id="bow_deathList">
+                  
+              </datalist>
+            </div>
+            <div class="col">
+              <button onclick="addPlayerCategory('bow_death',this)" class="categoryBtn">ADD</button>
+            </div>
+          </div>
+          </div>
+          <div class="player-card3">
+          
+          
+          </div>
+         
+        </div>
+      </div>
+      <!-- Death Ends -->
+    </div>
   </div>
-  </div>
-  
- 
-    <div class="footer" id="foo"></div>
+    <!-- Player Card Display Ends-->
+  </div >
+  <div  style="padding: 4%;" ></div>
+  <div style="transform:translate(22%,10%);max-width: 80%;" >
+  <button class="submitBtn">SUBMIT</button>
+</div>
+  <div class="footer" id="foo"></div>
   <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
   <script  src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-e4f7a928-6d34-df97-6fac-c1cba0c96cfb"></script>
 
   <!-- script tag to access variables  -->
-
-
   <script>
+
+     
+
+
+     
     var playerList=[{name:"Vimrat Kohmli",
                    type:"BAT",
                    is_wk:0,
@@ -682,11 +758,13 @@ html {
                    Color:"Brown"
                   },
                 ]
+
+
+  
   </script>
   <!-- js file for team selection card added dynamically -->
-  <script src="./teamSelect.js"></script>
+  <script src="./calWithLog.js"></script>
 
 </body>
 
 </html>
-<!-- search-ms:displayname=Search%20Results%20in%20OS%20(C%3A)&crumb=location:C%3A%5C\Python -->

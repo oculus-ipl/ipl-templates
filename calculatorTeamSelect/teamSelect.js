@@ -34,7 +34,7 @@
   $('#searchBar').typeahead({
     hint: true,
     highlight: true, /* Enable substring highlighting */
-    minLength: 1 /* Specify minimum characters required for showing suggestions */
+    minLength: 0 /* Specify minimum characters required for showing suggestions */
   },
   {
       name: 'common',
@@ -46,6 +46,9 @@
   function snackbarFunction(condition) {
   // Get the snackbar DIV
   var x = document.getElementById("snackbar");
+  if(condition=="You cannot add a player in more than two category in each section"){
+    x = document.getElementById("snackbar2");
+  }
   x.innerHTML=condition;
   // Add the "show" class to DIV
   x.className = "show";
@@ -112,7 +115,7 @@ var checkName=function(){
 
 
       let playerDiv=document.getElementById("playerDiv");
-      playerDiv.innerHTML+='<div class="col-lg-3" style="transition: all 0.5s ease-in">'+
+      playerDiv.innerHTML+='<div class="col" style="transition: all 0.5s ease-in">'+
       '<div class="wrapper">'+
     
     '<div class="fut-player-card" style="background-image:linear-gradient('+selectedPlayerInfo.Color+',black);">'+
@@ -167,11 +170,54 @@ var checkName=function(){
         playerCount=parseInt(selectedPlayerInfo.overall)+playerCount;
         console.log(playerCount);
         scoreTag.innerHTML=playerCount;
-        if(selectedPlayers.length<2){
+        if(selectedPlayers.length<11){
           playerCountDiv.innerHTML="You have to select <span style='color:red'>"+parseInt(11-selectedPlayers.length) +"</span> players!!";
         } else if(checkCriteria()){
 
-          playerCountDiv.innerHTML="You can now procced and click on <span class='formNext' onclick ='createForm();'>NEXT</span>";
+          $("#bat_pplList option").remove();
+          $("#bat_midList option").remove();
+          $("#bat_deathList option").remove();
+
+          $("#bow_pplList option").remove();
+          $("#bow_midList option").remove();
+          $("#bow_deathList option").remove();
+
+
+          playerCategory["BAT"].forEach(function(player){
+            console.log(player);
+            document.getElementById("bat_midList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bat_pplList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bat_deathList").innerHTML+="<option value='"+player+"'></option>";
+          })
+
+          playerCategory["WK"].forEach(function(player){
+            console.log(player);
+            document.getElementById("bat_midList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bat_pplList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bat_deathList").innerHTML+="<option value='"+player+"'></option>";
+          })
+
+          playerCategory["All"].forEach(function(player){
+            console.log(player);
+            document.getElementById("bat_midList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bat_pplList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bat_deathList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bow_deathList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bow_midList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bow_pplList").innerHTML+="<option value='"+player+"'></option>";
+
+          })
+
+          playerCategory["BOWL"].forEach(function(player){
+            console.log(player);
+            document.getElementById("bow_deathList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bow_midList").innerHTML+="<option value='"+player+"'></option>";
+            document.getElementById("bow_pplList").innerHTML+="<option value='"+player+"'></option>";
+
+          })
+
+          catInputFunction();
+          playerCountDiv.innerHTML="You can now procced and click on <span class='formNext'><a href='#moveDown'>NEXT</a></span>";
         } else{
           playerCountDiv.innerHTML="Criteria not fulfilled, check criteria <span class='criteriaButton' onclick='changeRuleBox();'>HERE</span>";
         }
@@ -180,6 +226,233 @@ var checkName=function(){
       } 
   }
  
+  var playerPositionObject={
+    "bat_ppl":[],
+    "bat_mid":[],
+    "bat_death":[],
+    "bow_ppl":[],
+    "bow_mid":[],
+    "bow_death":[]
+  }
+  
+  var remPlayerCategory=function(oldPlayer,el){
+    console.log(oldPlayer,el.parentNode.parentNode.parentNode.parentNode);
+    let playerNameDiv=el.parentNode.parentNode.parentNode.parentNode;
+   
+    
+  
+    console.log(oldPlayer.split("-"));
+    let infoArray=oldPlayer.split("-");
+    playerPositionObject[infoArray[0]].splice(playerPositionObject[infoArray[0]].indexOf(infoArray[1]),1);
+
+    playerNameDiv.style.opacity="0";
+    playerNameDiv.style.transfrom="scale(0.8,0.8)";
+    setTimeout(function(){ playerNameDiv.style.display="none";}, 400);
+    console.log(playerPositionObject)
+  }
+  
+
+
+  var checkCategoryCondition=function(category,playerName){
+    console.log(category);
+
+    if(!selectedPlayers.includes(playerName)){
+      snackbarFunction("Invalid Player Name , please select from the list");
+      return false;
+    }
+
+    if(playerPositionObject[category].includes(playerName)){
+      console.log("already selected in the given category");
+      snackbarFunction("already present");
+      return false;
+    }
+    
+    if(categoryCount(category)){
+
+      if(category=="bat_ppl"||category=="bat_mid"||category=="bat_death"){
+        console.log("yess inside batting check");
+        let countPlayer=0;
+          if(playerPositionObject["bat_death"].includes(playerName)){
+            countPlayer+=1
+          }
+          if(playerPositionObject["bat_mid"].includes(playerName)){
+            countPlayer+=1
+          }
+          if(playerPositionObject["bat_ppl"].includes(playerName)){
+            countPlayer+=1
+          }
+    
+          if(countPlayer>=2){
+            snackbarFunction("You cannot add a player in more than two category in each section");
+            console.log("yess working")
+            return false;
+          } else{
+            
+            return true;
+          }
+    
+      }else{
+          let countPlayer=0;
+          if(playerPositionObject["bow_death"].includes(playerName)){
+            countPlayer+=1
+          }
+          if(playerPositionObject["bow_mid"].includes(playerName)){
+            countPlayer+=1
+          }
+          if(playerPositionObject["bow_ppl"].includes(playerName)){
+            countPlayer+=1
+          }
+    
+          if(countPlayer>=2){
+            snackbarFunction("You cannot add a player in more than two category in each section");
+            return false;
+          } else{
+            return true;
+          } 
+        }
+
+    } else {
+      snackbarFunction("Sorry cannot add more in this category");
+    }
+     
+  }
+  
+  
+  var catInputFunction=()=>{
+    console.log("testing",document.getElementsByClassName('catInput')[0]); 
+    let condition=checkCriteria(); 
+    for(var i=0;i<6;i++){
+      if(condition &&selectedPlayers.length==11){
+        document.getElementsByClassName('catInput')[i].disabled=false;
+      } else{
+        document.getElementsByClassName('catInput')[i].disabled=true;
+      }
+    } 
+  }
+
+
+var categoryCount=(category)=>{
+
+  console.log(category);
+  if(category=="bat_ppl"&&playerPositionObject[category].length<4){
+    return true;
+  } else if(category=="bat_mid"&&playerPositionObject[category].length<4){
+    return true;
+  } else if(category=="bat_death"&&playerPositionObject[category].length<2){
+    return true;
+  }else if(category=="bow_ppl"&&playerPositionObject[category].length<3){
+    return true;
+  } else if(category=="bow_mid"&&playerPositionObject[category].length<3){
+    return true;
+  } else if(category=="bow_death"&&playerPositionObject[category].length<2){
+    return true;
+  }
+
+  return false;
+
+}
+
+
+  
+  
+  var addPlayerCategory=function(category,el){
+  
+    if(selectedPlayers.length==11){
+      console.log(category,el.parentNode.parentNode.childNodes[1].childNodes[1].value);
+      let playerName=el.parentNode.parentNode.childNodes[1].childNodes[1].value;
+      if(checkCategoryCondition(category,playerName) ){
+        let categoryName=category+"-"+playerName;
+      let className="rect-card "+playerName;
+
+        console.log("getting parent: ",el.parentNode.parentNode.parentNode.parentNode.childNodes[3])
+        let newDiv=el.parentNode.parentNode.parentNode.parentNode.childNodes[3];
+        newDiv.innerHTML+='<div class="'+className+'">'+
+        '<div class="row"  style="margin-left: 1rem;">'+
+            '<div class="col-lg-9">'+
+              '<h2 style="font-size:1.25rem;">'+playerName+'</h2>'+
+            '</div>'+
+            '<div class="col-lg-3">'+
+              '<div  style="width:1.4rem;height:1.4rem;">'+
+                '<img  class="crossImage" src="./closeButton.jpg" alt="Virat" draggable="false" style="width: 100%" onclick="remPlayerCategory('+"'"+categoryName+"'"+',this)"/>'+
+              '</div>'+
+            '</div>'+
+          '</div>'+
+        '</div>';
+        // will use the below code to delete elements
+        playerPositionObject[category].push(playerName);
+        console.log(playerPositionObject);
+        // console.log(document.getElementById(category+playerName).innerHTML);
+        el.parentNode.parentNode.childNodes[1].childNodes[1].value="";
+      } 
+    } else{
+      snackbarFunction("select 11 players first");
+    }
+    el.parentNode.parentNode.childNodes[1].childNodes[1].value="";
+  
+  }
+
+  var checkIfAddedInCategory=(player)=>{
+
+    console.log(player,"hiiiiiiiiii")
+    let present=false;
+    if(playerPositionObject["bat_ppl"].includes(player)){
+      present=true;
+      console.log("bat_ppl","hehehehe");
+      playerPositionObject["bat_ppl"].splice(playerPositionObject["bat_ppl"].indexOf(player),1);
+
+    }
+    if(playerPositionObject["bat_mid"].includes(player)){
+      present=true;
+      console.log("bat_mid");
+      playerPositionObject["bat_mid"].splice(playerPositionObject["bat_mid"].indexOf(player),1);
+
+    }
+    if(playerPositionObject["bat_death"].includes(player)){
+      present=true;
+      console.log("bat_death");
+      playerPositionObject["bat_death"].splice(playerPositionObject["bat_death"].indexOf(player),1);
+
+    }
+    if(playerPositionObject["bow_ppl"].includes(player)){
+      present=true;
+      console.log("bow_ppl");
+      playerPositionObject["bow_ppl"].splice(playerPositionObject["bow_ppl"].indexOf(player),1);
+
+    }
+    if(playerPositionObject["bow_mid"].includes(player)){
+      present=true;
+      console.log("bow_mid");
+      playerPositionObject["bow_mid"].splice(playerPositionObject["bow_mid"].indexOf(player),1);
+
+    }
+    if(playerPositionObject["bow_death"].includes(player)){
+      present=true;
+      console.log("bow_death");
+      playerPositionObject["bow_death"].splice(playerPositionObject["bow_death"].indexOf(player),1);
+
+    }
+    
+    if(present){
+      startAnimationForSelected("rect-card "+player);
+    }
+    
+  }
+  
+
+
+  var startAnimationForSelected=function(player){
+  
+    console.log(player," animation");
+    let classDiv=document.getElementsByClassName(player);
+  
+    document.getElementById("moveDown").scrollIntoView();
+    for(var j=0;j<classDiv.length;j++){
+      classDiv[j].style.display="none";
+      // console.log(classDiv[j]);
+    }
+
+  }
+
 
 
  var checkRemove=function(){
@@ -238,6 +511,11 @@ var remPlayer=function(player,tagCheck){
   console.log(selectedPlayers);
   changePlayerSelectedState();
   playerCountDiv.innerHTML="You have to select <span style='color:red'>"+parseInt(11-selectedPlayers.length) +"</span> players!!";
+  checkIfAddedInCategory(player);
+
+  if(selectedPlayers.length==10){
+    catInputFunction();
+  }
 
  }
 
@@ -299,7 +577,11 @@ var remPlayer=function(player,tagCheck){
         }
       }
 
-      if(playerCategory["RET"].length>2){
+      if((playerCategory["BOWL"].length+playerCategory["All"].length<5)){
+        return false;
+      }
+
+      if(playerCategory["RET"].length>2|| playerCategory["RET"].length<1){
         return false;
       }
 
